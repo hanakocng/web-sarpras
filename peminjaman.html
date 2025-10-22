@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Barang Peminjaman - SMKN 1 Cibinong</title>
+  <link rel="stylesheet" href="peminjaman.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-logo">
+        <img src="logo.png" alt="Logo SMKN 1 Cibinong" class="logo" />
+        <div class="nav-title">
+          <h1>SMKN 1 Cibinong</h1>
+          <p>Inventaris Sarpras</p>
+        </div>
+      </div>
+
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html">Beranda</a>
+        <a href="peminjaman.html">Peminjaman</a>
+        <a href="pengembalian.html">Pengembalian</a>
+        <a href="login.html">Login</a>
+      </div>
+
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- SIDEBAR MOBILE -->
+    <div class="sidebar" id="sidebar">
+      <a href="#">Beranda</a>
+      <a href="#">Peminjaman</a>
+      <a href="#">Pengembalian</a>
+      <a href="#">Login</a>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay"></div>
+  
+  <!-- HEADER -->
+  <header style="margin-top:100px;">
+    <h1>Daftar Barang yang Dapat Dipinjam</h1>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Cari barang...">
+    </div>
+  </header>
+
+  <!-- CARD CONTAINER -->
+  <main>
+    <div class="card-container" id="cardContainer"></div>
+    <p id="noResult" class="no-result">Barang tidak ditemukan 😔</p>
+  </main>
+  <script src="script.js"></script>
+  <script src="peminjaman.js"></script>
+</body>
+</html>

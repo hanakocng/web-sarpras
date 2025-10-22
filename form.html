@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Peminjaman - SMKN 1 Cibinong</title>
+  <link rel="stylesheet" href="form_style.css">
+</head>
+<style>
+    /* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+
+/* Halaman */
+body {
+  background-color: #f3f4f6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+
+.form-page {
+  width: 100%;
+  max-width: 700px;
+}
+
+/* Tombol kembali */
+.back-btn {
+  background: none;
+  border: none;
+  color: #2E3192;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: color 0.3s;
+}
+
+.back-btn:hover {
+  color: #29ABE2;
+}
+
+/* Container form */
+.form-container {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.form-container h1 {
+  color: #2E3192;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: 600;
+  color: #333;
+}
+
+input, textarea {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: #29ABE2;
+  box-shadow: 0 0 5px rgba(41, 171, 226, 0.5);
+  outline: none;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+/* Tombol submit */
+.submit-btn {
+  background-color: #2E3192;
+  color: #fff;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #29ABE2;
+}
+
+/* Responsive */
+@media(max-width: 500px){
+  .form-container {
+    padding: 25px 15px;
+  }
+}
+
+</style>
+<body>
+  <div class="form-page">
+    <button class="back-btn" onclick="history.back()">← Kembali</button>
+
+    <div class="form-container">
+      <h1>Formulir Peminjaman Barang</h1>
+      <form id="peminjamanForm">
+        <label for="namaBarang">Nama Barang</label>
+        <input type="text" id="namaBarang" name="namaBarang" readonly>
+
+        <label for="jumlah">Jumlah</label>
+        <input type="number" id="jumlah" name="jumlah" placeholder="Masukkan jumlah barang" min="1" required>
+
+        <label for="namaPeminjam">Nama Peminjam</label>
+        <input type="text" id="namaPeminjam" name="namaPeminjam" placeholder="Masukkan nama peminjam" required>
+
+        <label for="noTelepon">Nomor Telepon</label>
+        <input type="tel" id="noTelepon" name="noTelepon" placeholder="Masukkan nomor telepon aktif" required>
+
+        <label for="namaKelas">Nama Kelas</label>
+        <input type="text" id="namaKelas" name="namaKelas" placeholder="Contoh: X RPL 2" required>
+
+        <label for="namaGuru">Nama Guru Penanggung Jawab</label>
+        <input type="text" id="namaGuru" name="namaGuru" placeholder="Masukkan nama guru" required>
+
+        <label for="ruangan">Ruangan</label>
+        <input type="text" id="ruangan" name="ruangan" placeholder="Masukkan ruangan tujuan peminjaman" required>
+
+        <label for="tujuan">Tujuan Peminjaman</label>
+        <textarea id="tujuan" name="tujuan" placeholder="Contoh: Untuk presentasi kegiatan kelas" required></textarea>
+
+        <button type="submit" class="submit-btn">Kirim Peminjaman</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Ambil nama barang dari query parameter
+const urlParams = new URLSearchParams(window.location.search);
+const namaBarang = urlParams.get('barang') || '';
+document.getElementById('namaBarang').value = namaBarang;
+
+// Form submit
+document.getElementById('peminjamanForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const formData = {
+        namaBarang: document.getElementById('namaBarang').value,
+        jumlah: document.getElementById('jumlah').value,
+        namaPeminjam: document.getElementById('namaPeminjam').value,
+        noTelepon: document.getElementById('noTelepon').value,
+        namaKelas: document.getElementById('namaKelas').value,
+        namaGuru: document.getElementById('namaGuru').value,
+        ruangan: document.getElementById('ruangan').value,
+        tujuan: document.getElementById('tujuan').value,
+    };
+    alert("✅ Form berhasil dikirim!\n\n" + JSON.stringify(formData, null, 2));
+});
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Admin Sarpras</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    :root {
+  --smk-blue: #29ABE2;
+  --white: #fff;
+  --gray-light: #f3f4f6;
+  --gray-border: #ccc;
+  --gray-text: #6b7280;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--gray-light);
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.login-card {
+  background-color: var(--white);
+  padding: 30px 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--smk-blue);
+  margin-bottom: 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--gray-text);
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--gray-border);
+  border-radius: 12px;
+  padding: 8px 12px;
+  background-color: #fff;
+}
+
+.input-wrapper input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.icon {
+  margin-right: 8px;
+  font-size: 1.1rem;
+  color: var(--gray-text);
+}
+
+.btn-submit {
+  background-color: var(--smk-blue);
+  color: var(--white);
+  padding: 10px 0;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #007bbf;
+}
+
+.info-text {
+  text-align: center;
+  color: var(--gray-text);
+  font-size: 0.9rem;
+  margin-top: 15px;
+}
+
+</style>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-logo">
+        <img src="logo.png" alt="Logo SMKN 1 Cibinong" class="logo" />
+        <div class="nav-title">
+          <h1>SMKN 1 Cibinong</h1>
+          <p>Inventaris Sarpras</p>
+        </div>
+      </div>
+
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html">Beranda</a>
+        <a href="peminjaman.html">Peminjaman</a>
+        <a href="pengembalian.html">Pengembalian</a>
+        <a href="login.html">Login</a>
+      </div>
+
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- SIDEBAR MOBILE -->
+    <div class="sidebar" id="sidebar">
+      <a href="#">Beranda</a>
+      <a href="#">Peminjaman</a>
+      <a href="#">Pengembalian</a>
+      <a href="#">Login</a>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay"></div>
+  <div class="login-container">
+    <div class="login-card">
+      <h1 class="login-title">Login Admin Sarpras</h1>
+
+      <form id="loginForm" class="login-form">
+        <!-- Username -->
+        <div class="input-group">
+          <label for="username">Username</label>
+          <div class="input-wrapper">
+            <span class="icon">👤</span>
+            <input type="text" id="username" placeholder="Masukkan username" />
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="input-group">
+          <label for="password">Password</label>
+          <div class="input-wrapper">
+            <span class="icon">🔒</span>
+            <input type="password" id="password" placeholder="Masukkan password" />
+          </div>
+        </div>
+
+        <!-- Button -->
+        <button type="submit" class="btn-submit">Masuk</button>
+      </form>
+
+      <p class="info-text">
+        Gunakan akun admin untuk mengakses dashboard.
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+<script>
+    const form = document.getElementById("loginForm");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  if (!username || !password) {
+    alert("Silakan isi semua kolom!");
+    return;
+  }
+
+  if (username === "admin" && password === "12345") {
+    alert("Login berhasil!");
+    // Simulasi pindah halaman dashboard
+    window.location.href = "dashboard.html";
+  } else {
+    alert("Username atau password salah!");
+  }
+});
+
+</script>
+</html>
